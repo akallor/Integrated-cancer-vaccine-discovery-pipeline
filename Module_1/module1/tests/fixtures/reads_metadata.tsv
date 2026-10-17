@@ -1,0 +1,3 @@
+fastq_header	origin	sample	tissue
+read1	Fusion	PT01	tumor
+read2	lncRNA	PT01	tumor

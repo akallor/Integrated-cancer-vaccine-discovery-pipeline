@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/data/neopipe/path_a_chong_recovery/Module_1/module1/bin/translate_orfs.py", line 26, in <module>
+    from Bio import SeqIO
+ModuleNotFoundError: No module named 'Bio'

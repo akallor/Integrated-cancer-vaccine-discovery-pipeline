@@ -1,0 +1,17 @@
+# origin_class<TAB>frames(1|3|6)<TAB>strand(forward|both|auto)<TAB>genetic_code<TAB>min_aa_len<TAB>require_start(true|false)<TAB>cds(true|false)
+# frames=1 = one forward frame; frames=3 = one strand; frames=6 = both strands.
+# cds=true: treat the record as a defined ORF -> single frame, initiator codon -> M (non-AUG
+#           starts included), terminal stop dropped. Use for annotated ORFs (Ribo-seq ncORFs).
+variant_snv	3	forward	1	8	false	false
+frameshift_indel	3	forward	1	8	false	false
+fusion	3	forward	1	8	false	false
+aberrant_splicing	3	forward	1	8	false	false
+viral	3	forward	1	8	false	false
+microbial	3	forward	11	8	false	false
+erv	6	both	1	8	false	false
+ncrna	6	both	1	8	false	false
+ncorf	1	forward	1	8	false	true
+intronic	6	both	1	8	false	false
+intergenic	6	both	1	8	false	false
+out_of_frame	6	both	1	8	false	false
+unknown	6	both	1	8	false	false

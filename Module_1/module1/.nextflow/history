@@ -1,0 +1,19 @@
+2026-09-12 12:08:49	1.6s	mighty_meucci	ERR	4866cc3da7369af467f8c56b6c261df1	a686133d-b840-4f31-8880-11f265818ea3	nextflow run Module_1.nf --fasta test5.fasta --sample demo --tissue tumor
+2026-09-12 12:09:02	3.1s	prickly_lamarr	OK	4866cc3da7369af467f8c56b6c261df1	445e4a1d-f5e5-470c-a3cb-557c7f5d28e2	nextflow run Module_1.nf --fasta ../test5.fasta --sample demo --tissue tumor
+2026-09-12 13:09:48	-	fervent_venter	-	4866cc3da7369af467f8c56b6c261df1	9e6c6b26-e2b4-4490-942a-81671af099b8	nextflow run Module_1.nf --dry-run
+2026-09-12 13:09:59	-	elegant_bartik	-	4866cc3da7369af467f8c56b6c261df1	d05505fe-413d-4a15-ba89-a5fb75255c8c	nextflow run Module_1.nf --help
+2026-09-12 13:10:46	3.5s	lonely_avogadro	OK	4866cc3da7369af467f8c56b6c261df1	f3d6bb1c-f669-4626-80e9-94335030d8ea	nextflow run Module_1.nf --fasta ../test5.fasta --sample demo --tissue tumor
+2026-09-13 18:22:50	1.5s	jovial_linnaeus	ERR	4866cc3da7369af467f8c56b6c261df1	84e4eeac-2cf0-4691-b4b4-8cc1394d9b79	nextflow run Module_1.nf --fasta test5.fasta --sample demo --tissue tumor
+2026-09-13 18:23:02	3.3s	nostalgic_gutenberg	OK	4866cc3da7369af467f8c56b6c261df1	22cd5b9d-1d19-453a-81f6-e0cb44ddccf7	nextflow run Module_1.nf --fasta ../test5.fasta --sample demo --tissue tumor
+2026-09-13 18:35:09	3.3s	sleepy_cajal	OK	4866cc3da7369af467f8c56b6c261df1	4a3c7718-76b2-483a-a813-a6ebc8e8c4aa	nextflow run Module_1.nf --fasta ../test5.fasta ' '
+2026-09-13 18:35:45	3.4s	tiny_wilson	OK	4866cc3da7369af467f8c56b6c261df1	bd1dc571-e92e-4d65-8147-2b138a02158b	nextflow run Module_1.nf --fasta ../test5.fasta ' '
+2026-09-13 18:36:14	3s	elated_feynman	OK	4866cc3da7369af467f8c56b6c261df1	2b6e914b-5e2c-4f1b-bb8a-ba8db3575988	nextflow run Module_1.nf --fasta ../test5.fasta --sample demo --tissue tumor
+2026-09-14 06:24:54	2s	elated_northcutt	ERR	4866cc3da7369af467f8c56b6c261df1	87404270-8b2e-4162-a234-70e723a6160d	nextflow run Module_1.nf --fasta /data/neopipe/path_a_chong_recovery/Module_1/test5.fasta --sample demo --tissue tumor
+2026-09-14 06:25:52	3.2s	nice_sinoussi	OK	4866cc3da7369af467f8c56b6c261df1	c94d2ce8-4bb0-4a10-8941-07db63d7e95f	nextflow run Module_1.nf --fasta /data/neopipe/path_a_chong_recovery/Module_1/test5.fasta --sample demo --tissue tumor
+2026-09-14 06:53:12	3.7s	infallible_gates	OK	4866cc3da7369af467f8c56b6c261df1	554a2cbe-6549-46b3-ae87-92c005aed4c4	nextflow run Module_1.nf --fasta /data/neopipe/path_a_chong_recovery/Module_1/test5.fasta --sample demo --tissue tumor
+2026-09-14 07:46:00	3.1s	big_waddington	OK	4866cc3da7369af467f8c56b6c261df1	d8bde2ae-3e05-4de0-9306-d0765c6a4403	nextflow run Module_1.nf --fasta /data/neopipe/path_a_chong_recovery/Module_1/test5.fasta --sample demo --tissue tumor
+2026-09-14 08:58:31	3.5s	silly_hopper	OK	4866cc3da7369af467f8c56b6c261df1	97eeed53-b65d-4076-b574-392d7b6192b2	nextflow run Module_1.nf --fasta /data/neopipe/path_a_chong_recovery/Module_1/test5.fasta --sample demo --tissue tumor
+2026-09-16 09:59:39	3.4s	happy_sammet	OK	4866cc3da7369af467f8c56b6c261df1	f47675a8-492b-46f3-a089-88111c05a695	nextflow run Module_1.nf --fasta ./ddbj.fasta --sample demo --tissue tumor
+2026-09-16 10:04:15	3.6s	grave_ride	OK	4866cc3da7369af467f8c56b6c261df1	a1ac350e-6b00-458c-823b-b809784bea21	nextflow run Module_1.nf --fasta ./ddbj.fasta --sample demo --tissue tumor
+2026-09-16 10:43:28	1.3s	elegant_hugle	ERR	4866cc3da7369af467f8c56b6c261df1	290886c9-abed-486b-b93b-5f57db91fa94	nextflow run Module_1.nf --fasta /data/neopipe/path_a_chong_recovery/Module_1/module1/ddbj_out.fasta --sample mel04 --tissue tumor
+2026-09-16 10:44:06	3s	big_agnesi	OK	4866cc3da7369af467f8c56b6c261df1	eb221bed-6d6b-4955-8416-3b77f0eea0ff	nextflow run Module_1.nf --fasta /data/neopipe/path_c_ddbj_dataset/Module_1/module1/ddbj_out.fasta --sample mel04 --tissue tumor

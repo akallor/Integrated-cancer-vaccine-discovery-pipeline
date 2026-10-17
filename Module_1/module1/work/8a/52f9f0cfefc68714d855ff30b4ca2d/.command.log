@@ -1,0 +1,3 @@
+[translate] 5 input records -> 4 ORF peptides (>= min length). Origins: {'ncorf': 5}
+[translate] wrote peptides_test5.fasta and peptides_test5.tsv
+[translate] test5: 4 ORF peptides

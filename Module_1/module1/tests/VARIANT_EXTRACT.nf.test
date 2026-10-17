@@ -1,0 +1,29 @@
+// Tier 1 (real): VCF + reference -> mutant window FASTA. Encodes the "ALT allele applied" regression.
+nextflow_process {
+    name "VARIANT_EXTRACT"
+    script "../Module_1.nf"
+    process "VARIANT_EXTRACT"
+
+    test("applies ALT allele and classifies SNV vs indel") {
+        when {
+            params { outdir = "$outputDir"; sample = "PT01"; tissue = "tumor" }
+            process {
+                """
+                input[0] = file("${projectDir}/tests/fixtures/variants.vcf")
+                input[1] = file("${projectDir}/tests/fixtures/mini_ref.fasta")
+                """
+            }
+        }
+        then {
+            assert process.success
+            def fa = path(process.out.fasta.get(0)).text
+            assert fa.contains('origin=variant_snv')
+            assert fa.contains('origin=frameshift_indel')
+            assert fa.contains('gene=TESTG')
+            assert fa.contains('sample=PT01') && fa.contains('tissue=tumor')
+            // SNV was chrT:40 T->A into an all-GCT run: the emitted window must contain an 'A' break
+            def snvSeq = fa.readLines().dropWhile { !it.startsWith('>rs999') }[1]
+            assert snvSeq.contains('A')
+        }
+    }
+}

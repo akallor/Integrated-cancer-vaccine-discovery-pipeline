@@ -1,0 +1,3 @@
+id	sequence	class	origin	source	sample	tissue	locus	strand	frame	genetic_code	orf_offset_nt	aa_len	variant	gene	readid
+c1riboseqorf679:chr1:chr1:1249806-1249865:ENSG00000260179:lncRNA|orf2	ITAQPGIRGHYRSPHLGG	noncanonical	ncorf	lncRNA	DEMO	tumor	chr1:1249806-1249865	+	1	1	4	18	NA	ENSG00000260179	c1riboseqorf679:chr1:chr1:1249806-1249865:ENSG00000260179:lncRNA
+c1riboseqorf679:chr1:chr1:1249806-1249865:ENSG00000260179:lncRNA|orf7	TTKMWRPVVAPNARLRCYL	noncanonical	ncorf	lncRNA	DEMO	tumor	chr1:1249806-1249865	-	5	1	2	19	NA	ENSG00000260179	c1riboseqorf679:chr1:chr1:1249806-1249865:ENSG00000260179:lncRNA

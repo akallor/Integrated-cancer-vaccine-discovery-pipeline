@@ -1,0 +1,24 @@
+// Tier 1 (real): IGV-style renderer picks a variant + a non-canonical peptide and draws panels.
+nextflow_process {
+    name "VISUALIZE"
+    script "../Module_1.nf"
+    process "VISUALIZE"
+
+    test("renders IGV panels and records the selection") {
+        when {
+            params { outdir = "$outputDir"; viz_seed = 12 }
+            process {
+                """
+                input[0] = [ file("${projectDir}/tests/fixtures/peptides_demo.tsv") ]
+                """
+            }
+        }
+        then {
+            assert process.success
+            def sel = path(process.out.sel.get(0)).readLines()
+            assert sel.size() >= 2                         // header + >=1 selected peptide
+            assert sel[0].contains('locus')                // real selection table, not the empty note
+            assert process.out.png.size() >= 1             // at least one PNG produced
+        }
+    }
+}

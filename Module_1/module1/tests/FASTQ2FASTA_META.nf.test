@@ -1,0 +1,26 @@
+// Tier 1 (real): FASTQ + metadata -> FASTA. Origin stamped from metadata, quality stripped.
+nextflow_process {
+    name "FASTQ2FASTA_META"
+    script "../Module_1.nf"
+    process "FASTQ2FASTA_META"
+
+    test("stamps origin from metadata and drops quality") {
+        when {
+            params { outdir = "$outputDir" }
+            process {
+                """
+                input[0] = file("${projectDir}/tests/fixtures/reads.fastq")
+                input[1] = file("${projectDir}/tests/fixtures/reads_metadata.tsv")
+                """
+            }
+        }
+        then {
+            assert process.success
+            def fa = path(process.out.fasta.get(0)).text
+            assert fa.contains('origin=fusion')      // read1 -> Fusion -> fusion
+            assert fa.contains('origin=ncrna')       // read2 -> lncRNA -> ncrna
+            assert !fa.contains('+')                 // no FASTQ separator / quality
+            assert (fa =~ /(?m)^>/).count == 2
+        }
+    }
+}

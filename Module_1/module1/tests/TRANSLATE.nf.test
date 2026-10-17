@@ -1,0 +1,68 @@
+// Tier 1 (real): the rules-based translator on the 12-record multi-origin fixture.
+// Pinned to verified numbers: 51 ORF peptides; SNV/fusion/viral/microbial/frameshift -> 3 frames,
+// ERV/lncRNA/riboseq -> 6 frames. Encodes two regressions: explicit origin= override, lncRNA->6.
+nextflow_process {
+
+    name "TRANSLATE"
+    script "../Module_1.nf"
+    process "TRANSLATE"
+
+    test("multi-origin: correct per-origin frame counts and total ORFs") {
+        when {
+            params { outdir = "$outputDir" }
+            process {
+                """
+                input[0] = file("${projectDir}/tests/fixtures/multi_origin.fasta")
+                input[1] = file("${projectDir}/assets/origin_patterns.tsv")
+                input[2] = file("${projectDir}/assets/translation_rules.tsv")
+                """
+            }
+        }
+        then {
+            assert process.success
+            def tsv  = path(process.out.tsv.get(0)).readLines()
+            def hdr  = tsv[0].split('\t') as List
+            def iOrig = hdr.indexOf('origin'); def iFrame = hdr.indexOf('frame')
+            def iCls  = hdr.indexOf('class')
+            def body = tsv.drop(1).collect { it.split('\t') }
+            assert body.size() == 41                                   // pinned ORF count
+            def framesByOrigin = { o -> body.findAll { it[iOrig]==o }.collect { it[iFrame] }.toSet().size() }
+            assert framesByOrigin('variant_snv')      == 3
+            assert framesByOrigin('fusion')           == 3
+            assert framesByOrigin('viral')            == 3
+            assert framesByOrigin('microbial')        == 3
+            assert framesByOrigin('frameshift_indel') == 3
+            assert framesByOrigin('erv')              == 6
+            assert framesByOrigin('ncrna')            == 6
+            assert framesByOrigin('ncorf')        == 1   // Ribo-seq ORF: single CDS frame
+            // class column: SNV/frameshift are 'variant', others 'noncanonical'
+            assert body.find { it[iOrig]=='variant_snv' }[iCls] == 'variant'
+            assert body.find { it[iOrig]=='erv' }[iCls] == 'noncanonical'
+            // CDS mode: every ncORF peptide begins with the initiator Met
+            def iSeq = hdr.indexOf('sequence')
+            assert body.findAll { it[iOrig]=='ncorf' }.every { it[iSeq].startsWith('M') }
+        }
+    }
+
+    test("regression: explicit origin= overrides header pattern guessing") {
+        when {
+            params { outdir = "$outputDir" }
+            process {
+                """
+                input[0] = file("${projectDir}/tests/fixtures/multi_origin.fasta")
+                input[1] = file("${projectDir}/assets/origin_patterns.tsv")
+                input[2] = file("${projectDir}/assets/translation_rules.tsv")
+                """
+            }
+        }
+        then {
+            assert process.success
+            // read123 header carries origin=fusion and no other fusion tokens -> must be fusion (3 frames)
+            def tsv = path(process.out.tsv.get(0)).readLines()
+            def hdr = tsv[0].split('\t') as List
+            def rows = tsv.drop(1).collect { it.split('\t') }.findAll { it[hdr.indexOf('readid')]=='read123' }
+            assert rows.every { it[hdr.indexOf('origin')]=='fusion' }
+            assert rows.collect { it[hdr.indexOf('frame')] }.toSet().size() == 3
+        }
+    }
+}

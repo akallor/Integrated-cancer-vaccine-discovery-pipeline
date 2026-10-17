@@ -1,0 +1,54 @@
+>ddbj_1|orf1 class=unknown origin=unknown source=NA sample=demo tissue=tumor locus=NA strand=+ frame=0 genetic_code=1 orf_offset_nt=0 aa_len=9 variant=NA gene=NA readid=ddbj_1
+MPFAGLISA
+>ddbj_1|orf2 class=unknown origin=unknown source=NA sample=demo tissue=tumor locus=NA strand=+ frame=1 genetic_code=1 orf_offset_nt=1 aa_len=8 variant=NA gene=NA readid=ddbj_1
+CRLQASSL
+>ddbj_1|orf3 class=unknown origin=unknown source=NA sample=demo tissue=tumor locus=NA strand=+ frame=2 genetic_code=1 orf_offset_nt=2 aa_len=8 variant=NA gene=NA readid=ddbj_1
+AVCRPHLC
+>ddbj_1|orf4 class=unknown origin=unknown source=NA sample=demo tissue=tumor locus=NA strand=- frame=3 genetic_code=1 orf_offset_nt=0 aa_len=9 variant=NA gene=NA readid=ddbj_1
+SRDEACKRH
+>ddbj_1|orf5 class=unknown origin=unknown source=NA sample=demo tissue=tumor locus=NA strand=- frame=4 genetic_code=1 orf_offset_nt=1 aa_len=8 variant=NA gene=NA readid=ddbj_1
+AEMRPANG
+>ddbj_2|orf1 class=unknown origin=unknown source=NA sample=demo tissue=tumor locus=NA strand=+ frame=0 genetic_code=1 orf_offset_nt=0 aa_len=14 variant=NA gene=NA readid=ddbj_2
+RLFLGSSDSPASAF
+>ddbj_2|orf2 class=unknown origin=unknown source=NA sample=demo tissue=tumor locus=NA strand=+ frame=1 genetic_code=1 orf_offset_nt=1 aa_len=13 variant=NA gene=NA readid=ddbj_2
+ASSWVQVILLPQP
+>ddbj_2|orf3 class=unknown origin=unknown source=NA sample=demo tissue=tumor locus=NA strand=- frame=4 genetic_code=1 orf_offset_nt=1 aa_len=13 variant=NA gene=NA readid=ddbj_2
+KAEAGESLEPRKR
+>ddbj_2|orf4 class=unknown origin=unknown source=NA sample=demo tissue=tumor locus=NA strand=- frame=5 genetic_code=1 orf_offset_nt=2 aa_len=13 variant=NA gene=NA readid=ddbj_2
+RLRQENHLNPGRG
+>ddbj_3|orf1 class=unknown origin=unknown source=NA sample=demo tissue=tumor locus=NA strand=+ frame=0 genetic_code=1 orf_offset_nt=0 aa_len=11 variant=NA gene=NA readid=ddbj_3
+RSLTASFLLPR
+>ddbj_3|orf2 class=unknown origin=unknown source=NA sample=demo tissue=tumor locus=NA strand=+ frame=2 genetic_code=1 orf_offset_nt=2 aa_len=10 variant=NA gene=NA readid=ddbj_3
+EPNCFLPPSA
+>ddbj_3|orf3 class=unknown origin=unknown source=NA sample=demo tissue=tumor locus=NA strand=- frame=3 genetic_code=1 orf_offset_nt=0 aa_len=8 variant=NA gene=NA readid=ddbj_3
+PRKEEGSS
+>ddbj_3|orf4 class=unknown origin=unknown source=NA sample=demo tissue=tumor locus=NA strand=- frame=4 genetic_code=1 orf_offset_nt=1 aa_len=10 variant=NA gene=NA readid=ddbj_3
+RGRRKEAVRL
+>ddbj_3|orf5 class=unknown origin=unknown source=NA sample=demo tissue=tumor locus=NA strand=- frame=5 genetic_code=1 orf_offset_nt=2 aa_len=10 variant=NA gene=NA readid=ddbj_3
+AEGGRKQLGS
+>ddbj_4|orf1 class=unknown origin=unknown source=NA sample=demo tissue=tumor locus=NA strand=+ frame=0 genetic_code=1 orf_offset_nt=0 aa_len=12 variant=NA gene=NA readid=ddbj_4
+RLQQVQVTLILR
+>ddbj_4|orf2 class=unknown origin=unknown source=NA sample=demo tissue=tumor locus=NA strand=+ frame=2 genetic_code=1 orf_offset_nt=2 aa_len=11 variant=NA gene=NA readid=ddbj_4
+AAAGSSDLDPS
+>ddbj_4|orf3 class=unknown origin=unknown source=NA sample=demo tissue=tumor locus=NA strand=- frame=3 genetic_code=1 orf_offset_nt=0 aa_len=12 variant=NA gene=NA readid=ddbj_4
+SKDQGHLNLLQP
+>ddbj_4|orf4 class=unknown origin=unknown source=NA sample=demo tissue=tumor locus=NA strand=- frame=5 genetic_code=1 orf_offset_nt=2 aa_len=11 variant=NA gene=NA readid=ddbj_4
+EGSRSLEPAAA
+>ddbj_5|orf1 class=unknown origin=unknown source=NA sample=demo tissue=tumor locus=NA strand=+ frame=0 genetic_code=1 orf_offset_nt=0 aa_len=10 variant=NA gene=NA readid=ddbj_5
+SVAWPFSFPK
+>ddbj_5|orf2 class=unknown origin=unknown source=NA sample=demo tissue=tumor locus=NA strand=+ frame=1 genetic_code=1 orf_offset_nt=1 aa_len=9 variant=NA gene=NA readid=ddbj_5
+VLHGHSPFP
+>ddbj_5|orf3 class=unknown origin=unknown source=NA sample=demo tissue=tumor locus=NA strand=+ frame=2 genetic_code=1 orf_offset_nt=2 aa_len=9 variant=NA gene=NA readid=ddbj_5
+CCMAILLSQ
+>ddbj_5|orf4 class=unknown origin=unknown source=NA sample=demo tissue=tumor locus=NA strand=- frame=3 genetic_code=1 orf_offset_nt=0 aa_len=10 variant=NA gene=NA readid=ddbj_5
+FGKGEWPCNT
+>ddbj_5|orf5 class=unknown origin=unknown source=NA sample=demo tissue=tumor locus=NA strand=- frame=4 genetic_code=1 orf_offset_nt=1 aa_len=9 variant=NA gene=NA readid=ddbj_5
+LGKENGHAT
+>ddbj_5|orf6 class=unknown origin=unknown source=NA sample=demo tissue=tumor locus=NA strand=- frame=5 genetic_code=1 orf_offset_nt=2 aa_len=9 variant=NA gene=NA readid=ddbj_5
+WERRMAMQH
+>ddbj_6|orf1 class=unknown origin=unknown source=NA sample=demo tissue=tumor locus=NA strand=+ frame=0 genetic_code=1 orf_offset_nt=0 aa_len=9 variant=NA gene=NA readid=ddbj_6
+RLWSMIYRR
+>ddbj_6|orf2 class=unknown origin=unknown source=NA sample=demo tissue=tumor locus=NA strand=+ frame=2 genetic_code=1 orf_offset_nt=2 aa_len=8 variant=NA gene=NA readid=ddbj_6
+IMEYDLQA
+>ddbj_6|orf3 class=unknown origin=unknown source=NA sample=demo tissue=tumor locus=NA strand=- frame=5 genetic_code=1 orf_offset_nt=2 aa_len=8 variant=NA gene=NA readid=ddbj_6
+ACKSYSII

@@ -1,0 +1,8 @@
+>c1riboseqorf661:chr1:784439-784486:LINC01409:lncRNA|orf1 class=noncanonical origin=ncorf source=lncRNA sample=demo tissue=tumor locus=chr1:784439-784486 strand=+ frame=0 genetic_code=1 orf_offset_nt=0 aa_len=15 variant=NA gene=LINC01409 readid=c1riboseqorf661:chr1:784439-784486:LINC01409:lncRNA
+MVSKNHPPLKGNRAL
+>c1riboseqorf662:chr1:826700-826726:LINC00115:lncRNA|orf1 class=noncanonical origin=ncorf source=lncRNA sample=demo tissue=tumor locus=chr1:826700-826726 strand=+ frame=0 genetic_code=1 orf_offset_nt=0 aa_len=8 variant=NA gene=LINC00115 readid=c1riboseqorf662:chr1:826700-826726:LINC00115:lncRNA
+MESDLSKQ
+>c1riboseqorf300:chr1:826871-829027:LINC01128:lncRNA|orf1 class=noncanonical origin=ncorf source=lncRNA sample=demo tissue=tumor locus=chr1:826871-829027 strand=+ frame=0 genetic_code=1 orf_offset_nt=0 aa_len=25 variant=NA gene=NA readid=c1riboseqorf300:chr1:826871-829027:LINC01128:lncRNA
+MKKPLPRRSPLLSGTPGSFSPVTMA
+>c1riboseqorf301:chr1:chr1:829024-829092:LINC01128:lncRNA|orf1 class=noncanonical origin=ncorf source=lncRNA sample=demo tissue=tumor locus=chr1:829024-829092 strand=+ frame=0 genetic_code=1 orf_offset_nt=0 aa_len=22 variant=NA gene=NA readid=c1riboseqorf301:chr1:chr1:829024-829092:LINC01128:lncRNA
+MISAHCDLCFLGSRILLPQPPK

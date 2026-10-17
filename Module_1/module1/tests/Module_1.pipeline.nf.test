@@ -1,0 +1,57 @@
+// Tier 3: end-to-end mode dispatch + guard rails.
+nextflow_pipeline {
+    name "Module_1 pipeline"
+    script "../Module_1.nf"
+
+    test("FASTA mode -> 51 peptides") {
+        when { params {
+            fasta  = "${projectDir}/tests/fixtures/multi_origin.fasta"
+            outdir = "$outputDir"
+        } }
+        then {
+            assert workflow.success
+            def tsv = path("$outputDir/peptides/peptides_multi_origin.tsv").readLines()
+            assert tsv.size() == 42          // 41 ORFs + header
+            assert path("$outputDir/visualization/viz_selected.tsv").exists()
+        }
+    }
+
+    test("FASTQ_META mode runs and stamps origins") {
+        when { params {
+            fastq    = "${projectDir}/tests/fixtures/reads.fastq"
+            metadata = "${projectDir}/tests/fixtures/reads_metadata.tsv"
+            outdir   = "$outputDir"
+        } }
+        then { assert workflow.success }
+    }
+
+    test("VARIANT mode: sample/tissue params propagate to output (regression)") {
+        when { params {
+            vcf       = "${projectDir}/tests/fixtures/variants.vcf"
+            reference = "${projectDir}/tests/fixtures/mini_ref.fasta"
+            sample    = "PT01"; tissue = "tumor"
+            outdir    = "$outputDir"
+        } }
+        then {
+            assert workflow.success
+            def tsv = path("$outputDir/peptides/peptides_variants.tsv").text
+            assert tsv.contains('PT01') && tsv.contains('tumor')
+        }
+    }
+
+    test("guard: --vcf without --reference fails") {
+        when { params {
+            vcf    = "${projectDir}/tests/fixtures/variants.vcf"
+            outdir = "$outputDir"
+        } }
+        then { assert workflow.failed }
+    }
+
+    test("guard: --fastq without --metadata or --reference fails") {
+        when { params {
+            fastq  = "${projectDir}/tests/fixtures/reads.fastq"
+            outdir = "$outputDir"
+        } }
+        then { assert workflow.failed }
+    }
+}

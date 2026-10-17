@@ -1,0 +1,3 @@
+id	sequence	class	origin	source	sample	tissue	locus	strand	frame	genetic_code	orf_offset_nt	aa_len	variant	gene	readid
+c1riboseqorf661:chr1:784439-784486:LINC01409:lncRNA|orf1	MVSKNHPPLKGNRAL	noncanonical	ncorf	lncRNA	NA	unknown	chr1:784439-784486	+	0	1	0	15	NA	LINC01409	c1riboseqorf661:chr1:784439-784486:LINC01409:lncRNA
+c1riboseqorf662:chr1:826700-826726:LINC00115:lncRNA|orf1	MESDLSKQ	noncanonical	ncorf	lncRNA	NA	unknown	chr1:826700-826726	+	0	1	0	8	NA	LINC00115	c1riboseqorf662:chr1:826700-826726:LINC00115:lncRNA

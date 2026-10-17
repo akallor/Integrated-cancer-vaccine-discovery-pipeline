@@ -1,0 +1,23 @@
+// Tier 2 (stub): FASTQ-only alignment arm is a scaffold; stub verifies the IO contract
+// (emits an origin-annotated nt FASTA that TRANSLATE can consume).
+nextflow_process {
+    name "ALIGN_EXTRACT"
+    script "../Module_1.nf"
+    process "ALIGN_EXTRACT"
+    options "-stub"
+    test("stub emits an origin-annotated nucleotide FASTA") {
+        when {
+            params { outdir = "$outputDir" }
+            process {
+                """
+                input[0] = file("${projectDir}/tests/fixtures/reads.fastq")
+                input[1] = file("${projectDir}/tests/fixtures/mini_ref.fasta")
+                """
+            }
+        }
+        then {
+            assert process.success
+            assert path(process.out.fasta.get(0)).text.contains('origin=')
+        }
+    }
+}

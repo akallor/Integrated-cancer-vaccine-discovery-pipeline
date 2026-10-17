@@ -1,0 +1,15 @@
+# priority<TAB>origin_class<TAB>regex   (matched case-insensitively against the full FASTA header)
+# lower priority number = tested first; first match wins. Add/reorder rows freely.
+# An explicit `origin=<class>` token in a header always overrides these (handled in code).
+10	fusion	(::)|(_fusion)|(fusion[_-]?junction)
+20	frameshift_indel	(p\.[A-Za-z]{3}\d+fs)|(_c\.\d+(del|dup|ins))|(frameshift)|(\bfs\b)
+30	variant_snv	(type=snv)|(\bsnv\b)|(chr[\w.]+:\d+:[ACGTN]+:[ACGTN]+)|(\brs\d+\b)
+40	erv	(herv)|(\berv\d?\b)|(endogenous.{0,3}retrovirus)|(rmsk_herv)|(_int_strand)|(\bltr\b)
+50	viral	(\bvirus\b)|(viral)|(coronavirus)|(\bsars)|(influenza)|(hepatitis)|(\bhpv\b)|(\bhiv\b)|(nc_045512)
+60	microbial	(escherichia)|(\bcoli\b)|(bacteri)|(substr\.)|(\bstr\.\s)|(mg1655)|(salmonella)|(staphylococcus)|(mycobacterium)|(klebsiella)|(pseudomonas)
+70	ncorf	(riboseq)|(ribo_seq)|(_orf_\d+_frame)|(riboseqorf)
+80	ncrna	(lncrna)|(lincrna)|(\bncrna\b)|(processed_transcript)|(antisense)|(\blinc\d)
+85	aberrant_splicing	(aberrant.{0,3}splic)|(splice.?junction)|(neojunction)|(exon.?skip)|(a[35]ss)
+88	intronic	(\bintron)
+89	intergenic	(intergenic)
+999	unknown	.*

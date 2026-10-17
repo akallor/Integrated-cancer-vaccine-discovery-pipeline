@@ -1,0 +1,14 @@
+# origin_class<TAB>frames(3|6)<TAB>strand(forward|both|auto)<TAB>genetic_code<TAB>min_aa_len<TAB>require_start
+variant_snv	3	forward	1	8	false
+frameshift_indel	3	forward	1	8	false
+fusion	3	forward	1	8	false
+aberrant_splicing	3	forward	1	8	false
+viral	3	forward	1	8	false
+microbial	3	forward	11	8	false
+erv	6	both	1	8	false
+ncrna	6	both	1	8	false
+ncorf	6	both	1	8	false
+intronic	6	both	1	8	false
+intergenic	6	both	1	8	false
+out_of_frame	6	both	1	8	false
+unknown	6	both	1	8	false

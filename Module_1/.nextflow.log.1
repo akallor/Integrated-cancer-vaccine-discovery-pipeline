@@ -1,0 +1,71 @@
+Sep-12 17:46:31.319 [main] DEBUG nextflow.cli.Launcher - $> nextflow run Module_1.nf --fasta test5.fasta --sample demo --tissue tumor
+Sep-12 17:46:31.419 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 26.04.6
+Sep-12 17:46:31.440 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/ec2-user/.nextflow/plugins; core-plugins: nf-amazon@3.9.2,nf-azure@1.22.6,nf-cloudcache@0.6.0,nf-codecommit@0.5.3,nf-console@1.3.0,nf-google@1.27.3,nf-k8s@1.5.4,nf-seqera@0.21.1,nf-tower@1.28.2,nf-wave@1.21.0
+Sep-12 17:46:31.468 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Sep-12 17:46:31.469 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Sep-12 17:46:31.471 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.14.1 in 'deployment' mode
+Sep-12 17:46:31.487 [main] DEBUG nextflow.util.RetryConfig - Missing nextflow session - using default retry config
+Sep-12 17:46:31.614 [main] DEBUG nextflow.plugin.PluginUpdater - Using plugin repository: HttpPluginRepository [registry]; url=https://registry.nextflow.io/api
+Sep-12 17:46:31.618 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Sep-12 17:46:31.639 [main] DEBUG nextflow.config.ConfigParserFactory - Using config parser v2
+Sep-12 17:46:31.683 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Sep-12 17:46:31.683 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Sep-12 17:46:31.695 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/ec2-user/.nextflow/secrets/store.json
+Sep-12 17:46:31.712 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@4d6ee47] - activable => nextflow.secret.LocalSecretsProvider@4d6ee47
+Sep-12 17:46:31.729 [main] DEBUG nextflow.cli.CmdRun - Launching `Module_1.nf` [condescending_noether] - revision: 4866cc3da7
+Sep-12 17:46:31.807 [main] DEBUG nextflow.Session - Session UUID: 02d32712-662f-4371-a877-558e0cb952d0
+Sep-12 17:46:31.807 [main] DEBUG nextflow.Session - Run name: condescending_noether
+Sep-12 17:46:31.807 [main] DEBUG nextflow.Session - Executor pool size: 16
+Sep-12 17:46:31.814 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Sep-12 17:46:31.819 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=48; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Sep-12 17:46:31.837 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 26.04.6 build 12646
+  Created: 09-07-2026 18:49 UTC 
+  System: Linux 6.18.44-99.149.amzn2023.x86_64
+  Runtime: Groovy 4.0.31 on OpenJDK 64-Bit Server VM 23.0.2-internal-adhoc.conda.src
+  Encoding: UTF-8 (UTF-8)
+  Process: 22621@ip-172-31-40-167.eu-west-2.compute.internal [172.31.40.167]
+  CPUs: 16 - Mem: 123.8 GB (120.5 GB) - Swap: 64 GB (64 GB)
+Sep-12 17:46:31.855 [main] DEBUG nextflow.Session - Work-dir: /data/neopipe/path_a_chong_recovery/Module_1/work [xfs]
+Sep-12 17:46:31.855 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /data/neopipe/path_a_chong_recovery/Module_1/bin
+Sep-12 17:46:31.862 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Sep-12 17:46:31.870 [main] DEBUG nextflow.Session - Observer factory (v2): LinObserverFactory
+Sep-12 17:46:31.872 [main] DEBUG nextflow.Session - Observer factory (v2): DefaultObserverFactory
+Sep-12 17:46:31.898 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Sep-12 17:46:31.906 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 17; maxThreads: 1000
+Sep-12 17:46:31.954 [main] DEBUG nextflow.Session - Session start
+Sep-12 17:46:31.960 [main] DEBUG nextflow.script.ScriptLoaderFactory - Using script parser v2
+Sep-12 17:46:32.622 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Sep-12 17:46:32.772 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Main: /data/neopipe/path_a_chong_recovery/Module_1/Module_1.nf
+Sep-12 17:46:32.772 [main] DEBUG nextflow.Session - Session aborted -- Cause: /data/neopipe/path_a_chong_recovery/Module_1/assets/origin_patterns.tsv
+Sep-12 17:46:32.789 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=0; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=0ms; failedDuration=0ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=0; peakCpus=0; peakMemory=0; ]
+Sep-12 17:46:32.965 [main] ERROR nextflow.cli.Launcher - /data/neopipe/path_a_chong_recovery/Module_1/assets/origin_patterns.tsv
+java.nio.file.NoSuchFileException: /data/neopipe/path_a_chong_recovery/Module_1/assets/origin_patterns.tsv
+	at nextflow.file.FileHelper.checkIfExists(FileHelper.groovy:1113)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at nextflow.Nextflow.file0(Nextflow.groovy:136)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at nextflow.Nextflow.file(Nextflow.groovy:118)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at Main$_runScript_closure7$_closure25.doCall(Main:264)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:328)
+	at org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeMethod(ClosureMetaClass.java:280)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1009)
+	at groovy.lang.Closure.call(Closure.java:433)
+	at groovy.lang.Closure.call(Closure.java:412)
+	at nextflow.script.WorkflowDef.run0(WorkflowDef.groovy:204)
+	at nextflow.script.WorkflowDef.run(WorkflowDef.groovy:187)
+	at nextflow.script.BindableDef.invoke_a(BindableDef.groovy:51)
+	at nextflow.script.BaseScript.run0(BaseScript.groovy:297)
+	at nextflow.script.BaseScript.run(BaseScript.groovy:308)
+	at nextflow.script.parser.v2.ScriptLoaderV2.runScript(ScriptLoaderV2.groovy:99)
+	at nextflow.script.parser.v2.ScriptLoaderV2.runScript(ScriptLoaderV2.groovy)
+	at nextflow.script.ScriptRunner.run(ScriptRunner.groovy:229)
+	at nextflow.script.ScriptRunner.execute(ScriptRunner.groovy:128)
+	at nextflow.cli.CmdRun.run(CmdRun.groovy:442)
+	at nextflow.cli.Launcher.run(Launcher.groovy:526)
+	at nextflow.cli.Launcher.main(Launcher.groovy:686)

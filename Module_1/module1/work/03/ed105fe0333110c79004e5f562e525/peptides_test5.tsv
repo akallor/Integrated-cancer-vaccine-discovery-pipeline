@@ -1,0 +1,5 @@
+id	sequence	class	origin	source	sample	tissue	locus	strand	frame	genetic_code	orf_offset_nt	aa_len	variant	gene	readid
+c1riboseqorf661:chr1:784439-784486:LINC01409:lncRNA|orf1	MVSKNHPPLKGNRAL	noncanonical	ncorf	lncRNA	demo	tumor	chr1:784439-784486	+	0	1	0	15	NA	LINC01409	c1riboseqorf661:chr1:784439-784486:LINC01409:lncRNA
+c1riboseqorf662:chr1:826700-826726:LINC00115:lncRNA|orf1	MESDLSKQ	noncanonical	ncorf	lncRNA	demo	tumor	chr1:826700-826726	+	0	1	0	8	NA	LINC00115	c1riboseqorf662:chr1:826700-826726:LINC00115:lncRNA
+c1riboseqorf300:chr1:826871-829027:LINC01128:lncRNA|orf1	MKKPLPRRSPLLSGTPGSFSPVTMA	noncanonical	ncorf	lncRNA	demo	tumor	chr1:826871-829027	+	0	1	0	25	NA	NA	c1riboseqorf300:chr1:826871-829027:LINC01128:lncRNA
+c1riboseqorf301:chr1:829024-829092:LINC01128:lncRNA|orf1	MISAHCDLCFLGSRILLPQPPK	noncanonical	ncorf	lncRNA	demo	tumor	chr1:829024-829092	+	0	1	0	22	NA	NA	c1riboseqorf301:chr1:829024-829092:LINC01128:lncRNA

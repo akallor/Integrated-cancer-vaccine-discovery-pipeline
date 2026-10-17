@@ -1,0 +1,23 @@
+// Tier 2 (stub): read-aware (IsoVar-style) variant arm is a scaffold; stub verifies IO contract.
+nextflow_process {
+    name "VARIANT_READAWARE"
+    script "../Module_1.nf"
+    process "VARIANT_READAWARE"
+    options "-stub"
+    test("stub emits variant-annotated nucleotide FASTA") {
+        when {
+            params { outdir = "$outputDir" }
+            process {
+                """
+                input[0] = file("${projectDir}/tests/fixtures/variants.vcf")
+                input[1] = file("${projectDir}/tests/fixtures/reads.fastq")
+                input[2] = file("${projectDir}/tests/fixtures/mini_ref.fasta")
+                """
+            }
+        }
+        then {
+            assert process.success
+            assert path(process.out.fasta.get(0)).text.contains('origin=variant_snv')
+        }
+    }
+}

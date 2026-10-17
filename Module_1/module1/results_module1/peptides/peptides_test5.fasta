@@ -1,0 +1,48 @@
+>c1riboseqorf661:chr1:784439-784486:LINC01409:lncRNA|orf1 class=noncanonical origin=ncorf source=lncRNA sample=DEMO tissue=tumor locus=chr1:784439-784486 strand=+ frame=0 genetic_code=1 orf_offset_nt=0 aa_len=15 variant=NA gene=LINC01409 readid=c1riboseqorf661:chr1:784439-784486:LINC01409:lncRNA
+LVSKNHPPLKGNRAL
+>c1riboseqorf661:chr1:784439-784486:LINC01409:lncRNA|orf2 class=noncanonical origin=ncorf source=lncRNA sample=DEMO tissue=tumor locus=chr1:784439-784486 strand=+ frame=1 genetic_code=1 orf_offset_nt=1 aa_len=8 variant=NA gene=LINC01409 readid=c1riboseqorf661:chr1:784439-784486:LINC01409:lncRNA
+WFLKTILL
+>c1riboseqorf661:chr1:784439-784486:LINC01409:lncRNA|orf3 class=noncanonical origin=ncorf source=lncRNA sample=DEMO tissue=tumor locus=chr1:784439-784486 strand=+ frame=2 genetic_code=1 orf_offset_nt=11 aa_len=12 variant=NA gene=LINC01409 readid=c1riboseqorf661:chr1:784439-784486:LINC01409:lncRNA
+KPSSSKRKQSSL
+>c1riboseqorf661:chr1:784439-784486:LINC01409:lncRNA|orf4 class=noncanonical origin=ncorf source=lncRNA sample=DEMO tissue=tumor locus=chr1:784439-784486 strand=- frame=3 genetic_code=1 orf_offset_nt=24 aa_len=8 variant=NA gene=LINC01409 readid=c1riboseqorf661:chr1:784439-784486:LINC01409:lncRNA
+RRMVFRNQ
+>c1riboseqorf661:chr1:784439-784486:LINC01409:lncRNA|orf5 class=noncanonical origin=ncorf source=lncRNA sample=DEMO tissue=tumor locus=chr1:784439-784486 strand=- frame=4 genetic_code=1 orf_offset_nt=1 aa_len=15 variant=NA gene=LINC01409 readid=c1riboseqorf661:chr1:784439-784486:LINC01409:lncRNA
+QRALFPFRGGWFLET
+>c1riboseqorf661:chr1:784439-784486:LINC01409:lncRNA|orf6 class=noncanonical origin=ncorf source=lncRNA sample=DEMO tissue=tumor locus=chr1:784439-784486 strand=- frame=5 genetic_code=1 orf_offset_nt=2 aa_len=12 variant=NA gene=LINC01409 readid=c1riboseqorf661:chr1:784439-784486:LINC01409:lncRNA
+KELCFLLEEDGF
+>c1riboseqorf662:chr1:826700-826726:LINC00115:lncRNA|orf1 class=noncanonical origin=ncorf source=lncRNA sample=DEMO tissue=tumor locus=chr1:826700-826726 strand=+ frame=0 genetic_code=1 orf_offset_nt=0 aa_len=8 variant=NA gene=LINC00115 readid=c1riboseqorf662:chr1:826700-826726:LINC00115:lncRNA
+KESDLSKQ
+>c1riboseqorf662:chr1:826700-826726:LINC00115:lncRNA|orf2 class=noncanonical origin=ncorf source=lncRNA sample=DEMO tissue=tumor locus=chr1:826700-826726 strand=- frame=3 genetic_code=1 orf_offset_nt=0 aa_len=9 variant=NA gene=LINC00115 readid=c1riboseqorf662:chr1:826700-826726:LINC00115:lncRNA
+LLLAQVTLL
+>c1riboseqorf662:chr1:826700-826726:LINC00115:lncRNA|orf3 class=noncanonical origin=ncorf source=lncRNA sample=DEMO tissue=tumor locus=chr1:826700-826726 strand=- frame=4 genetic_code=1 orf_offset_nt=1 aa_len=8 variant=NA gene=LINC00115 readid=c1riboseqorf662:chr1:826700-826726:LINC00115:lncRNA
+YCLLRSLS
+>c1riboseqorf662:chr1:826700-826726:LINC00115:lncRNA|orf4 class=noncanonical origin=ncorf source=lncRNA sample=DEMO tissue=tumor locus=chr1:826700-826726 strand=- frame=5 genetic_code=1 orf_offset_nt=2 aa_len=8 variant=NA gene=LINC00115 readid=c1riboseqorf662:chr1:826700-826726:LINC00115:lncRNA
+TACSGHSP
+>c1riboseqorf300:chr1:826871-829027:LINC01128:lncRNA|orf1 class=noncanonical origin=ncorf source=lncRNA sample=DEMO tissue=tumor locus=chr1:826871-829027 strand=+ frame=0 genetic_code=1 orf_offset_nt=0 aa_len=25 variant=NA gene=LINC01128 readid=c1riboseqorf300:chr1:826871-829027:LINC01128:lncRNA
+MKKPLPRRSPLLSGTPGSFSPVTMA
+>c1riboseqorf300:chr1:826871-829027:LINC01128:lncRNA|orf2 class=noncanonical origin=ncorf source=lncRNA sample=DEMO tissue=tumor locus=chr1:826871-829027 strand=+ frame=1 genetic_code=1 orf_offset_nt=4 aa_len=24 variant=NA gene=LINC01128 readid=c1riboseqorf300:chr1:826871-829027:LINC01128:lncRNA
+RSPCQGGARFSVGHREVSLLSQWH
+>c1riboseqorf300:chr1:826871-829027:LINC01128:lncRNA|orf3 class=noncanonical origin=ncorf source=lncRNA sample=DEMO tissue=tumor locus=chr1:826871-829027 strand=+ frame=2 genetic_code=1 orf_offset_nt=2 aa_len=25 variant=NA gene=LINC01128 readid=c1riboseqorf300:chr1:826871-829027:LINC01128:lncRNA
+EEAPAKEEPASQWDTGKFLSCHNGM
+>c1riboseqorf300:chr1:826871-829027:LINC01128:lncRNA|orf4 class=noncanonical origin=ncorf source=lncRNA sample=DEMO tissue=tumor locus=chr1:826871-829027 strand=- frame=3 genetic_code=1 orf_offset_nt=0 aa_len=26 variant=NA gene=LINC01128 readid=c1riboseqorf300:chr1:826871-829027:LINC01128:lncRNA
+SCHCDRRETSRCPTEKRAPPWQGLLH
+>c1riboseqorf300:chr1:826871-829027:LINC01128:lncRNA|orf5 class=noncanonical origin=ncorf source=lncRNA sample=DEMO tissue=tumor locus=chr1:826871-829027 strand=- frame=4 genetic_code=1 orf_offset_nt=1 aa_len=25 variant=NA gene=LINC01128 readid=c1riboseqorf300:chr1:826871-829027:LINC01128:lncRNA
+HAIVTGEKLPGVPLRSGLLLGRGFF
+>c1riboseqorf300:chr1:826871-829027:LINC01128:lncRNA|orf6 class=noncanonical origin=ncorf source=lncRNA sample=DEMO tissue=tumor locus=chr1:826871-829027 strand=- frame=5 genetic_code=1 orf_offset_nt=14 aa_len=9 variant=NA gene=LINC01128 readid=c1riboseqorf300:chr1:826871-829027:LINC01128:lncRNA
+QERNFPVSH
+>c1riboseqorf300:chr1:826871-829027:LINC01128:lncRNA|orf7 class=noncanonical origin=ncorf source=lncRNA sample=DEMO tissue=tumor locus=chr1:826871-829027 strand=- frame=5 genetic_code=1 orf_offset_nt=44 aa_len=11 variant=NA gene=LINC01128 readid=c1riboseqorf300:chr1:826871-829027:LINC01128:lncRNA
+EAGSSLAGASS
+>c1riboseqorf679:chr1:chr1:1249806-1249865:ENSG00000260179:lncRNA|orf1 class=noncanonical origin=ncorf source=lncRNA sample=DEMO tissue=tumor locus=chr1:1249806-1249865 strand=+ frame=0 genetic_code=1 orf_offset_nt=0 aa_len=19 variant=NA gene=ENSG00000260179 readid=c1riboseqorf679:chr1:chr1:1249806-1249865:ENSG00000260179:lncRNA
+INNSAAWHSGPLPVSTSWW
+>c1riboseqorf679:chr1:chr1:1249806-1249865:ENSG00000260179:lncRNA|orf2 class=noncanonical origin=ncorf source=lncRNA sample=DEMO tissue=tumor locus=chr1:1249806-1249865 strand=+ frame=1 genetic_code=1 orf_offset_nt=4 aa_len=18 variant=NA gene=ENSG00000260179 readid=c1riboseqorf679:chr1:chr1:1249806-1249865:ENSG00000260179:lncRNA
+ITAQPGIRGHYRSPHLGG
+>c1riboseqorf679:chr1:chr1:1249806-1249865:ENSG00000260179:lncRNA|orf3 class=noncanonical origin=ncorf source=lncRNA sample=DEMO tissue=tumor locus=chr1:1249806-1249865 strand=+ frame=2 genetic_code=1 orf_offset_nt=8 aa_len=17 variant=NA gene=ENSG00000260179 readid=c1riboseqorf679:chr1:chr1:1249806-1249865:ENSG00000260179:lncRNA
+QRSLAFGATTGLHILVV
+>c1riboseqorf679:chr1:chr1:1249806-1249865:ENSG00000260179:lncRNA|orf4 class=noncanonical origin=ncorf source=lncRNA sample=DEMO tissue=tumor locus=chr1:1249806-1249865 strand=- frame=3 genetic_code=1 orf_offset_nt=0 aa_len=8 variant=NA gene=ENSG00000260179 readid=c1riboseqorf679:chr1:chr1:1249806-1249865:ENSG00000260179:lncRNA
+LPPRCGDR
+>c1riboseqorf679:chr1:chr1:1249806-1249865:ENSG00000260179:lncRNA|orf5 class=noncanonical origin=ncorf source=lncRNA sample=DEMO tissue=tumor locus=chr1:1249806-1249865 strand=- frame=3 genetic_code=1 orf_offset_nt=27 aa_len=11 variant=NA gene=ENSG00000260179 readid=c1riboseqorf679:chr1:chr1:1249806-1249865:ENSG00000260179:lncRNA
+WPRMPGCAVIY
+>c1riboseqorf679:chr1:chr1:1249806-1249865:ENSG00000260179:lncRNA|orf6 class=noncanonical origin=ncorf source=lncRNA sample=DEMO tissue=tumor locus=chr1:1249806-1249865 strand=- frame=4 genetic_code=1 orf_offset_nt=1 aa_len=19 variant=NA gene=ENSG00000260179 readid=c1riboseqorf679:chr1:chr1:1249806-1249865:ENSG00000260179:lncRNA
+YHQDVETGSGPECQAALLF
+>c1riboseqorf679:chr1:chr1:1249806-1249865:ENSG00000260179:lncRNA|orf7 class=noncanonical origin=ncorf source=lncRNA sample=DEMO tissue=tumor locus=chr1:1249806-1249865 strand=- frame=5 genetic_code=1 orf_offset_nt=2 aa_len=19 variant=NA gene=ENSG00000260179 readid=c1riboseqorf679:chr1:chr1:1249806-1249865:ENSG00000260179:lncRNA
+TTKMWRPVVAPNARLRCYL
