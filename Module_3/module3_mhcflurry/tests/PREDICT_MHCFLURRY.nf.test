@@ -1,0 +1,49 @@
+// PREDICT_MHCFLURRY: stub contract (no model) + a REAL dry-run that exercises the actual
+// script's sample-matching / tissue / category prep (needs pandas only, no MHCflurry).
+nextflow_process {
+
+    name "PREDICT_MHCFLURRY"
+    script "../Module_3.nf"
+    process "PREDICT_MHCFLURRY"
+
+    test("stub: emits MHCflurry schema and records the script") {
+        options "-stub"
+        when {
+            params { outdir = "$outputDir" }
+            process {
+                """
+                input[0] = file("${projectDir}/tests/fixtures/stub/peptides_s1.tsv")
+                input[1] = file("${projectDir}/tests/fixtures/stub/haplotypes.tsv")
+                input[2] = file("${projectDir}/assets/NO_ANNOTATION")
+                """
+            }
+        }
+        then {
+            assert process.success
+            def cols = path(process.out.pred.get(0)).readLines()[0]
+            assert cols.contains('mhcflurry_affinity')
+            assert cols.contains('binding_allele')
+            assert path(process.out.sm.get(0)).text.contains('05_mhcflurry_predict.py')
+        }
+    }
+
+    test("dry-run (REAL): assigns sample/tissue without invoking MHCflurry") {
+        when {
+            params { outdir = "$outputDir"; dry_run = true }
+            process {
+                """
+                input[0] = file("${projectDir}/tests/fixtures/dryrun/peptides.tsv")
+                input[1] = file("${projectDir}/tests/fixtures/dryrun/haplotypes.tsv")
+                input[2] = file("${projectDir}/assets/NO_ANNOTATION")
+                """
+            }
+        }
+        then {
+            assert process.success
+            def plan = path(process.out.pred.get(0)).text
+            assert plan.contains('Per-sample plan')
+            assert plan.contains('0D5P')                      // sample matched from the run token
+            assert path(process.out.sm.get(0)).text.contains('DRY_RUN')
+        }
+    }
+}

@@ -1,0 +1,94 @@
+// Tier 3 (end-to-end). Dispatch + guard run in stub (no predictor binaries). The final
+// test runs the plot arm FOR REAL via -entry PLOTS (real aggregate + all five plot scripts;
+// needs matplotlib/pandas, no MHCflurry/shap).
+nextflow_pipeline {
+
+    name "Module_3 dispatch, guard, and real plot arm"
+    script "../Module_3.nf"
+
+    test("class I + MHCFlurry -> predict + SHAP explain + plots (stub)") {
+        options "-stub"
+        when {
+            params {
+                hla_class  = 'I'; predictor = 'MHCFlurry'
+                peptides   = "${projectDir}/tests/fixtures/stub/peptides_*.tsv"
+                haplotypes = "${projectDir}/tests/fixtures/stub/haplotypes.tsv"
+                outdir     = "$outputDir"
+            }
+        }
+        then {
+            assert workflow.success
+            assert path("$outputDir/predictions/pred_peptides_s1.tsv").exists()
+            assert path("$outputDir/explain/explain_peptides_s1").exists()          // SHAP arm ran
+            assert path("$outputDir/summary_tables/df_binder_raw_counts.tsv").exists()
+            assert path("$outputDir/plots/jaccard.summary").exists()
+        }
+    }
+
+    test("class I + MHCnuggets -> predict only, right script, no explain/plots (stub)") {
+        options "-stub"
+        when {
+            params {
+                hla_class  = 'I'; predictor = 'MHCnuggets'
+                peptides   = "${projectDir}/tests/fixtures/stub/peptides_*.tsv"
+                haplotypes = "${projectDir}/tests/fixtures/stub/haplotypes.tsv"
+                outdir     = "$outputDir"
+            }
+        }
+        then {
+            assert workflow.success
+            assert path("$outputDir/predictions/pred_peptides_s1.summary").text.contains('05_b_mhcnuggets_predict.py')
+            assert !path("$outputDir/explain").exists()
+            assert !path("$outputDir/summary_tables").exists()      // plots default off for MHCnuggets
+        }
+    }
+
+    test("class II + MHCnuggets -> dispatches the HLA-II panel predictor (stub)") {
+        options "-stub"
+        when {
+            params {
+                hla_class  = 'II'; predictor = 'MHCnuggets'
+                peptides   = "${projectDir}/tests/fixtures/stub/peptides_*.tsv"
+                haplotypes = "${projectDir}/tests/fixtures/stub/haplotypes.tsv"
+                outdir     = "$outputDir"
+            }
+        }
+        then {
+            assert workflow.success
+            assert path("$outputDir/predictions/pred_peptides_s1.summary").text
+                       .contains('05_c_mhcnuggets_predict_hlaii.py')
+        }
+    }
+
+    test("REGRESSION: class II + MHCFlurry is rejected") {
+        options "-stub"
+        when {
+            params {
+                hla_class  = 'II'; predictor = 'MHCFlurry'
+                peptides   = "${projectDir}/tests/fixtures/stub/peptides_*.tsv"
+                haplotypes = "${projectDir}/tests/fixtures/stub/haplotypes.tsv"
+                outdir     = "$outputDir"
+            }
+        }
+        then {
+            assert !workflow.success
+        }
+    }
+
+    test("PLOTS entry runs the diagnostic-plot arm for real on existing predictions") {
+        options "-entry PLOTS"
+        when {
+            params {
+                predictions = "${projectDir}/tests/fixtures/predict/pred_sample.tsv"
+                outdir      = "$outputDir"
+            }
+        }
+        then {
+            assert workflow.success
+            assert path("$outputDir/summary_tables/df_binder_raw_counts.tsv").exists()
+            assert path("$outputDir/plots/jaccard_allele_jaccard_heatmap.png").exists()
+            assert path("$outputDir/plots/fig_binder_counts").exists()
+            assert path("$outputDir/plots/fig_allele_proportions").exists()   // broken-shebang script ran
+        }
+    }
+}

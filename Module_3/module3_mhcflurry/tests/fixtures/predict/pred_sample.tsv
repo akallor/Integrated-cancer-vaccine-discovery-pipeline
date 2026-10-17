@@ -1,0 +1,9 @@
+peptide	sample	tissue	category	noncanonical_origin	binding_allele	mhcflurry_affinity	mhcflurry_affinity_percentile	mhcflurry_binder_call
+KYKDRTNILF	S1	tumor	non-canonical	lncRNA	HLA-A*02:01	45.2	0.30	SB
+SLLQHLIGL	S1	tumor	canonical		HLA-A*02:01	780	1.50	WB
+GILGFVFTL	S1	normal	canonical		HLA-B*15:01	22000	45.0	NB
+NLVPMVATV	S1	tumor	canonical		HLA-B*15:01	120	0.90	WB
+FLYALALLL	S2	tumor	non-canonical	TE	HLA-A*02:01	30	0.20	SB
+RQLLFVLLL	S2	normal	canonical		HLA-C*12:03	260	1.10	WB
+AAAWYLWEV	S2	tumor	canonical		HLA-A*02:01	9000	20.0	NB
+TX	S2	tumor	non-canonical	uORF	HLA-C*12:03	40	0.40	SB

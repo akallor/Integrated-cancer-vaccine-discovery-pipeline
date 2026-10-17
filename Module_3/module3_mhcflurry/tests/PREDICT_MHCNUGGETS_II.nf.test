@@ -1,0 +1,50 @@
+// PREDICT_MHCNUGGETS_II: stub contract + a REAL dry-run that exercises mod3_common
+// (shared prep) and the default common-allele panel (needs pandas only, no MHCnuggets).
+nextflow_process {
+
+    name "PREDICT_MHCNUGGETS_II"
+    script "../Module_3.nf"
+    process "PREDICT_MHCNUGGETS_II"
+
+    test("stub: emits class-II schema flagged common-panel, records the script") {
+        options "-stub"
+        when {
+            params { outdir = "$outputDir" }
+            process {
+                """
+                input[0] = file("${projectDir}/tests/fixtures/stub/peptides_s1.tsv")
+                input[1] = file("${projectDir}/tests/fixtures/stub/haplotypes.tsv")
+                input[2] = file("${projectDir}/assets/NO_ANNOTATION")
+                input[3] = file("${projectDir}/assets/NO_PANEL")
+                """
+            }
+        }
+        then {
+            assert process.success
+            def rows = path(process.out.pred.get(0)).readLines()
+            assert rows[0].contains('binding_allele_source')
+            assert rows.any { it.contains('common_panel_NOT_sample_specific') }
+            assert path(process.out.sm.get(0)).text.contains('05_c_mhcnuggets_predict_hlaii.py')
+        }
+    }
+
+    test("dry-run (REAL): mod3_common prep + default DRB1 panel, no MHCnuggets") {
+        when {
+            params { outdir = "$outputDir"; dry_run = true }
+            process {
+                """
+                input[0] = file("${projectDir}/tests/fixtures/dryrun/peptides.tsv")
+                input[1] = file("${projectDir}/tests/fixtures/dryrun/haplotypes.tsv")
+                input[2] = file("${projectDir}/assets/NO_ANNOTATION")
+                input[3] = file("${projectDir}/assets/NO_PANEL")
+                """
+            }
+        }
+        then {
+            assert process.success
+            def plan = path(process.out.pred.get(0)).text
+            assert plan.contains('panel alleles')            // class-II panel plan printed
+            assert path(process.out.sm.get(0)).text.contains('DRY_RUN')
+        }
+    }
+}

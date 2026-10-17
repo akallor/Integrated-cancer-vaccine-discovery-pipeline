@@ -1,0 +1,38 @@
+// Tier 1 (unit, REAL). The inferred aggregation that feeds the four static plots.
+// Counts are pinned to the fixture so a schema regression fails loudly.
+nextflow_process {
+
+    name "AGGREGATE (real: summary tables + counts)"
+    script "../Module_3.nf"
+    process "AGGREGATE"
+
+    test("derives the four fixed-name summary tables with correct counts") {
+        when {
+            params { outdir = "$outputDir" }
+            process {
+                """
+                input[0] = file("${projectDir}/tests/fixtures/predict/pred_sample.tsv")
+                """
+            }
+        }
+        then {
+            assert process.success
+            def tables = process.out.tables.get(0).collect { it.toString().split('/')[-1] }
+            assert tables.toSet() == [
+                'df_binder_raw_counts.tsv', 'df_allele_pep_counts.tsv',
+                'df_origin_grp.tsv', 'df_tissue_grp.tsv'
+            ].toSet()
+
+            def get = { nm -> path(process.out.tables.get(0).find { it.toString().endsWith(nm) }).readLines() }
+
+            // sample x {SB,WB,NB}:  S1 -> 1/2/1 , S2 -> 2/1/1
+            assert get('df_binder_raw_counts.tsv').any { it.startsWith('S1\t1\t2\t1') }
+            assert get('df_binder_raw_counts.tsv').any { it.startsWith('S2\t2\t1\t1') }
+            // sample x {canonical, non_canonical}: S1 -> 3/1 , S2 -> 2/2
+            assert get('df_origin_grp.tsv').any { it.startsWith('S1\t3\t1') }
+            assert get('df_origin_grp.tsv').any { it.startsWith('S2\t2\t2') }
+            // tissue x {canonical, non_canonical}: tumor -> 3/3
+            assert get('df_tissue_grp.tsv').any { it.startsWith('tumor\t3\t3') }
+        }
+    }
+}

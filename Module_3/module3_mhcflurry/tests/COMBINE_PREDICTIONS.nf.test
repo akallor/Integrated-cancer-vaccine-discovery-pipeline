@@ -1,0 +1,25 @@
+// Tier 1 (unit, REAL). Generic concat of prediction TSVs: one header, all data rows.
+nextflow_process {
+
+    name "COMBINE_PREDICTIONS (real)"
+    script "../Module_3.nf"
+    process "COMBINE_PREDICTIONS"
+
+    test("merges N prediction TSVs into one header + all rows") {
+        when {
+            params { outdir = "$outputDir" }
+            process {
+                """
+                input[0] = [ file("${projectDir}/tests/fixtures/predict/pred_s1.tsv"),
+                             file("${projectDir}/tests/fixtures/predict/pred_s2.tsv") ]
+                """
+            }
+        }
+        then {
+            assert process.success
+            def rows = path(process.out.combined.get(0)).readLines()
+            assert rows.size() == 9                                        // 1 header + 8 data rows
+            assert rows.findAll { it.startsWith('peptide\t') }.size() == 1 // header not duplicated
+        }
+    }
+}

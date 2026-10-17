@@ -1,0 +1,47 @@
+// Tier 1 (unit, REAL). One static-plot invocation: stages the pre-aggregated df_*.tsv
+// under their fixed names and runs the (CLI-less) script via python3 with MPLBACKEND=Agg.
+nextflow_process {
+
+    name "PLOT_STATIC (real)"
+    script "../Module_3.nf"
+    process "PLOT_STATIC"
+
+    test("binder_counts: reads df_binder_raw_counts.tsv and emits a figure") {
+        when {
+            params { outdir = "$outputDir" }
+            process {
+                """
+                input[0] = ['binder_counts', 'plot_binders_counts.py']
+                input[1] = [ file("${projectDir}/tests/fixtures/agg/df_binder_raw_counts.tsv"),
+                             file("${projectDir}/tests/fixtures/agg/df_allele_pep_counts.tsv"),
+                             file("${projectDir}/tests/fixtures/agg/df_origin_grp.tsv"),
+                             file("${projectDir}/tests/fixtures/agg/df_tissue_grp.tsv") ]
+                """
+            }
+        }
+        then {
+            assert process.success
+            assert path(process.out.fig.get(0)).list().any { it.toString().endsWith('.png') }
+            assert path(process.out.sm.get(0)).text.contains('binder_counts')
+        }
+    }
+
+    test("allele_proportions: broken-shebang script still runs via python3") {
+        when {
+            params { outdir = "$outputDir" }
+            process {
+                """
+                input[0] = ['allele_proportions', 'plot_allele_proportions_v2.py']
+                input[1] = [ file("${projectDir}/tests/fixtures/agg/df_binder_raw_counts.tsv"),
+                             file("${projectDir}/tests/fixtures/agg/df_allele_pep_counts.tsv"),
+                             file("${projectDir}/tests/fixtures/agg/df_origin_grp.tsv"),
+                             file("${projectDir}/tests/fixtures/agg/df_tissue_grp.tsv") ]
+                """
+            }
+        }
+        then {
+            assert process.success   // regression: no /bin/sh syntax error from the blank first line
+            assert path(process.out.fig.get(0)).list().any { it.toString().endsWith('.png') }
+        }
+    }
+}

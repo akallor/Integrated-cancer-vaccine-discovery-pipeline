@@ -1,0 +1,31 @@
+// Tier 1 (unit, REAL). run_explain.py --backend surrogate runs the whole SHAP/ISM/motif
+// stack without MHCflurry/TensorFlow. Needs `shap` in the runner env.
+nextflow_process {
+
+    name "EXPLAIN (real, surrogate backend)"
+    script "../Module_3.nf"
+    process "EXPLAIN"
+
+    test("emits positional SHAP + ISM + motif artefacts for MHCflurry predictions") {
+        when {
+            params {
+                outdir          = "$outputDir"
+                explain_backend = 'surrogate'
+                explain_seed    = 7
+            }
+            process {
+                """
+                input[0] = file("${projectDir}/tests/fixtures/predict/pred_sample.tsv")
+                """
+            }
+        }
+        then {
+            assert process.success
+            def files = path(process.out.expl.get(0)).list().collect { it.toString() }
+            assert files.any { it.contains('positional_shap') }        // SHAP values written
+            assert files.any { it.contains('ism_') }                   // ISM weight matrices
+            assert files.any { it.contains('selected_peptides') }
+            assert path(process.out.sm.get(0)).text.contains('SHAP explanation')
+        }
+    }
+}

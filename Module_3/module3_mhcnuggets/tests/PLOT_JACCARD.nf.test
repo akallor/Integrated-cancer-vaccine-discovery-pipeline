@@ -1,0 +1,25 @@
+// Tier 1 (unit, REAL). plot_allele_jaccard.py has a real CLI on the raw predictions.
+nextflow_process {
+
+    name "PLOT_JACCARD (real)"
+    script "../Module_3.nf"
+    process "PLOT_JACCARD"
+
+    test("produces jaccard heatmaps + shared-peptide tables from predictions") {
+        when {
+            params { outdir = "$outputDir" }
+            process {
+                """
+                input[0] = file("${projectDir}/tests/fixtures/predict/pred_sample.tsv")
+                """
+            }
+        }
+        then {
+            assert process.success
+            def figs = process.out.fig.get(0).collect { it.toString() }
+            assert figs.any { it.endsWith('allele_jaccard_heatmap.png') }
+            assert figs.any { it.endsWith('shared_peptides_by_allele.tsv') }
+            assert path(process.out.sm.get(0)).text.contains('jaccard')
+        }
+    }
+}
