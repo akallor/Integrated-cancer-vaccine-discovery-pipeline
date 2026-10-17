@@ -1,0 +1,26 @@
+// Tier 2 (contract). Stub run: no ThermoRawFileParser / no AWS. Verifies the mzML
+// prefix is carried forward and the conversion summary is emitted.
+nextflow_process {
+
+    name "CONVERT_STREAM (stub contract)"
+    script "../Module_2.nf"
+    process "CONVERT_STREAM"
+    options "-stub"
+
+    test("passes the mzML S3 prefix through and emits the conversion summary") {
+        when {
+            params { outdir = "$outputDir" }
+            process {
+                """
+                input[0] = 's3://bucket/PXD013649/raw'
+                input[1] = 's3://bucket/PXD013649/mzml'
+                """
+            }
+        }
+        then {
+            assert process.success
+            assert process.out.s3_mzml.get(0) == 's3://bucket/PXD013649/mzml'
+            assert path(process.out.sm.get(0)).text.contains('mzML files')
+        }
+    }
+}

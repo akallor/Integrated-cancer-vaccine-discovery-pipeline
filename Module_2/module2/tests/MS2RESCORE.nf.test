@@ -1,0 +1,40 @@
+// Tier 2 (contract) + explainability arm. Stub run: no ms2rescore binary / no AWS.
+// The MS2Rescore output is your robustness/explainability evidence, so this test pins
+// the post-rescoring PSM and unique-peptide counts and the count reported in the summary.
+nextflow_process {
+
+    name "MS2RESCORE (stub contract + post-rescoring counts)"
+    script "../Module_2.nf"
+    process "MS2RESCORE"
+    options "-stub"
+
+    test("emits a resolved rescored PSM table and reports the post-rescoring count") {
+        when {
+            params {
+                outdir = "$outputDir"
+                rescore_threads = 1
+            }
+            process {
+                """
+                input[0] = tuple('I',
+                                 file("${projectDir}/tests/fixtures/group_fdr/rescored_psms.tsv"),
+                                 's3://bucket/PXD013649/mzml')
+                input[1] = file("${projectDir}/tests/fixtures/stub/ms2rescore_config.json")
+                """
+            }
+        }
+        then {
+            assert process.success
+
+            def psm = path(process.out.res.get(0)[1]).readLines()
+            assert psm.size() == 3                                   // header + 2 PSMs
+
+            // unique peptides post-rescoring = the number you surface as robustness evidence
+            def peptides = psm.drop(1).collect { it.split('\t')[0] }.toSet()
+            assert peptides.size() == 2
+
+            // the same count is printed on the progress bar / summary
+            assert path(process.out.sm.get(0)).text.contains('2 rescored PSMs')
+        }
+    }
+}

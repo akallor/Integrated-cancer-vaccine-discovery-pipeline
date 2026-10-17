@@ -1,0 +1,7 @@
+search:
+  min_len: 8
+  max_len: 15
+fdr:
+  q_threshold: 0.01
+outputs:
+  fdr_report: results/group_fdr_recovery.tsv

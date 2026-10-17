@@ -1,0 +1,12 @@
+search:
+  min_len: 8
+  max_len: 15
+fdr:
+  q_threshold: 0.01
+outputs:
+  fdr_report: results/group_fdr_recovery.tsv
+build:
+  out_fasta: build/search.fasta
+  min_pep_len: 8
+inputs:
+  canonical_proteome_fasta: proteome.fasta

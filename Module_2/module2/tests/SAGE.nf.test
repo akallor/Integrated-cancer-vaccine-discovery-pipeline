@@ -1,0 +1,33 @@
+// Tier 2 (contract). Stub run: no Sage binary / no AWS sync. Verifies the per-class
+// output tuple shape and that a results.sage.tsv with a 'rank' column is produced
+// (the column the MS2Rescore stage filters on).
+nextflow_process {
+
+    name "SAGE (stub contract)"
+    script "../Module_2.nf"
+    process "SAGE"
+    options "-stub"
+
+    test("emits (class, results.sage.tsv, mzml_prefix) and carries the mzML prefix forward") {
+        when {
+            params { outdir = "$outputDir" }
+            process {
+                """
+                input[0] = tuple('I',
+                                 file("${projectDir}/tests/fixtures/stub/sage_config.json"),
+                                 4,
+                                 's3://bucket/PXD013649/mzml')
+                input[1] = file("${projectDir}/tests/fixtures/build_fasta/proteome.fasta")
+                """
+            }
+        }
+        then {
+            assert process.success
+            def emitted = process.out.res.get(0)
+            assert emitted[0] == 'I'                              // class label
+            assert emitted[2] == 's3://bucket/PXD013649/mzml'     // mzML prefix carried to rescore
+            def hdr = path(emitted[1]).readLines().first()
+            assert hdr.split('\t').contains('rank')              // rank-1 filter target exists
+        }
+    }
+}

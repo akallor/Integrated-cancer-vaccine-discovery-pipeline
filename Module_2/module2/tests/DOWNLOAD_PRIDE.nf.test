@@ -1,0 +1,28 @@
+// Tier 2 (contract). Stub run: no pridepy / no AWS. Verifies the IO contract —
+// the S3 prefix is passed through unchanged and the PRIDE count/size summary is emitted.
+nextflow_process {
+
+    name "DOWNLOAD_PRIDE (stub contract)"
+    script "../Module_2.nf"
+    process "DOWNLOAD_PRIDE"
+    options "-stub"
+
+    test("passes the raw S3 prefix through and emits the download summary") {
+        when {
+            params { outdir = "$outputDir" }
+            process {
+                """
+                input[0] = 'PXD013649'
+                input[1] = 's3://bucket/PXD013649/raw'
+                """
+            }
+        }
+        then {
+            assert process.success
+            // prefix is carried forward untouched for the next stage
+            assert process.out.s3_raw.get(0) == 's3://bucket/PXD013649/raw'
+            // summary line is the one surfaced on the progress bar
+            assert path(process.out.sm.get(0)).text.contains('Files downloaded from PRIDE: Total number')
+        }
+    }
+}

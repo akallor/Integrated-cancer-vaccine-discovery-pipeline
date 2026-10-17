@@ -1,0 +1,5 @@
+build:
+  out_fasta: build/search.fasta
+  min_pep_len: 8
+inputs:
+  canonical_proteome_fasta: proteome.fasta

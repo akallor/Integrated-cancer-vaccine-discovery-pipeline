@@ -1,0 +1,72 @@
+// Tier 1 (unit, REAL execution of 04_group_fdr_recovery.py against fixtures).
+// Reads bin/validation_targets.tsv (reference list shipped) + python pandas/pyyaml.
+// Encodes the group-specific-FDR idea and two real behavioural subtleties as regressions.
+nextflow_process {
+
+    name "GROUP_FDR (real: group-specific FDR + recovery)"
+    script "../Module_2.nf"
+    process "GROUP_FDR"
+
+    test("splits CANON/NONCANON and reports per-group passing peptides") {
+        when {
+            params { outdir = "$outputDir" }
+            process {
+                """
+                input[0] = tuple('I', file("${projectDir}/tests/fixtures/group_fdr/rescored_psms.tsv"))
+                input[1] = file("${projectDir}/tests/fixtures/group_fdr/config.yaml")
+                """
+            }
+        }
+        then {
+            assert process.success
+            def tables  = process.out.tables.get(0)[1]
+            def passing = tables.find { !it.toString().endsWith('.recovery.tsv') }
+            def rows    = path(passing).readLines()
+            // both groups survive their own per-group q<=0.01 filter; 2 passing PSMs total
+            assert rows.size() == 3                       // header + 2 PSMs
+            assert rows.any { it.contains('\tCANON\t') }
+            assert rows.any { it.contains('\tNONCANON\t') }
+        }
+    }
+
+    test("regression: positive control recovered through flanking residues + I/L normalization") {
+        when {
+            params { outdir = "$outputDir" }
+            process {
+                """
+                input[0] = tuple('I', file("${projectDir}/tests/fixtures/group_fdr/rescored_psms.tsv"))
+                input[1] = file("${projectDir}/tests/fixtures/group_fdr/config.yaml")
+                """
+            }
+        }
+        then {
+            assert process.success
+            def recovery = process.out.tables.get(0)[1].find { it.toString().endsWith('.recovery.tsv') }
+            def rec = path(recovery).readLines()
+            // KYKDRTNILF was searched as K.KYKDRTNILF.L (flanks) and matched via I->L; must be recovered
+            assert rec.any { it.startsWith('KYKDRTNILF\t') && it.trim().endsWith('True') }
+            // SLLQHLIGL is length-eligible but absent from the passing set -> genuine MISS, not SKIP
+            assert rec.any { it.startsWith('SLLQHLIGL\t') && it.contains('\tTrue\tFalse') }
+        }
+    }
+
+    test("regression: out-of-window targets are SKIP (not MISS) so denominator is 'searchable'") {
+        when {
+            params { outdir = "$outputDir" }
+            process {
+                """
+                input[0] = tuple('I', file("${projectDir}/tests/fixtures/group_fdr/rescored_psms.tsv"))
+                input[1] = file("${projectDir}/tests/fixtures/group_fdr/config.yaml")
+                """
+            }
+        }
+        then {
+            assert process.success
+            def recovery = process.out.tables.get(0)[1].find { it.toString().endsWith('.recovery.tsv') }
+            def rec = path(recovery).readLines()
+            // 17-mer and 3-mer fall outside the HLA-I 8-15 window -> searchable == False
+            assert rec.any { it.startsWith('NLVPMVATVQGQNLKYQ\t') && it.contains('\tFalse\tFalse') }
+            assert rec.any { it.startsWith('AKL\t') && it.contains('\tFalse\tFalse') }
+        }
+    }
+}

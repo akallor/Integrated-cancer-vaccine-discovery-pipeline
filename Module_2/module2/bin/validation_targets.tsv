@@ -1,0 +1,5 @@
+peptide	class	note
+KYKDRTNILF	HLA-I	ABCB5 positive control
+SLLQHLIGL	HLA-I	unrecovered control (searchable, not in passing set)
+NLVPMVATVQGQNLKYQ	HLA-II	long peptide, outside HLA-I 8-15 window
+AKL	HLA-I	too-short sentinel

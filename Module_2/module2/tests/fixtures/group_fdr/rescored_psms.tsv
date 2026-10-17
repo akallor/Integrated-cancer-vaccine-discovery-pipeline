@@ -1,0 +1,5 @@
+peptide	proteins	mokapot score	mokapot q-value	is_decoy
+K.KYKDRTNILF.L	chong_pub_0|grp=NONCANON|src=pub	5.0	0.001	False
+PEPTIDEK	sp|P1|grp=CANON|src=uniprot	4.0	0.002	False
+DECOYSEQK	rev_sp|P2|grp=CANON	-1.0	0.60	True
+FAKENON	chong_pub_9|grp=NONCANON	0.2	0.40	False

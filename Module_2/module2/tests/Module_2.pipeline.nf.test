@@ -1,0 +1,39 @@
+// Tier 3 (end-to-end). Whole pipeline in stub mode: no external tools, no AWS.
+// Proves the six-stage DAG wires and completes, and that --hla_class both fans out
+// to two independent HLA-I / HLA-II branches through Sage -> rescore -> group FDR.
+nextflow_pipeline {
+
+    name "Module_2 end-to-end (stub)"
+    script "../Module_2.nf"
+
+    test("all six stages complete and 'both' fans out to two final FDR branches") {
+        options "-stub"
+        when {
+            params {
+                pride      = 'PXD013649'
+                s3_raw     = 's3://bucket/PXD013649/raw'
+                s3_mzml    = 's3://bucket/PXD013649/mzml'
+                hla_class  = 'both'
+                outdir     = "$outputDir"
+
+                // point every path input at shipped fixtures so the stub run is self-contained
+                sage_config_I      = "${projectDir}/tests/fixtures/stub/sage_config.json"
+                sage_config_II     = "${projectDir}/tests/fixtures/stub/sage_config.json"
+                ms2rescore_config  = "${projectDir}/tests/fixtures/stub/ms2rescore_config.json"
+                build_config       = "${projectDir}/tests/fixtures/stub/config.yaml"
+                fdr_config         = "${projectDir}/tests/fixtures/stub/config.yaml"
+                peptides_tsv       = "${projectDir}/tests/fixtures/build_fasta/peptides.tsv"
+                canonical_proteome = "${projectDir}/tests/fixtures/build_fasta/proteome.fasta"
+            }
+        }
+        then {
+            assert workflow.success
+            // both classes reached the final stage
+            assert path("$outputDir/06_group_fdr/HLA-I").exists()
+            assert path("$outputDir/06_group_fdr/HLA-II").exists()
+            // the two Sage summaries were published (fan-out really happened)
+            assert path("$outputDir/04_sage/sage_I.summary").exists()
+            assert path("$outputDir/04_sage/sage_II.summary").exists()
+        }
+    }
+}

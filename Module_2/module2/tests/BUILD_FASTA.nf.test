@@ -1,0 +1,39 @@
+// Tier 1 (unit, REAL execution of 02_build_search_fasta.py against fixtures).
+// Requires common/sequtils.py (reference impl shipped) + python pandas/pyyaml.
+nextflow_process {
+
+    name "BUILD_FASTA (real: search-space assembly)"
+    script "../Module_2.nf"
+    process "BUILD_FASTA"
+
+    test("assembles CANON+NONCANON, applies min_pep_len, and keeps published provenance on dedup") {
+        when {
+            params { outdir = "$outputDir" }
+            process {
+                """
+                input[0] = 'ready'
+                input[1] = file("${projectDir}/tests/fixtures/build_fasta/config.yaml")
+                input[2] = file("${projectDir}/tests/fixtures/build_fasta/peptides.tsv")
+                input[3] = file("${projectDir}/tests/fixtures/build_fasta/proteome.fasta")
+                """
+            }
+        }
+        then {
+            assert process.success
+
+            def fa = path(process.out.fasta.get(0)).readLines()
+            def headers = fa.findAll { it.startsWith('>') }
+
+            // KYKDRTNILF (10aa) + PEPTIDEK (8aa) + MPEPTIDEKAAAA (proteome) = 3; SHORT (5aa) filtered
+            assert headers.size() == 3
+            assert !fa.any { it == 'SHORT' }
+
+            // REGRESSION: PEPTIDEK exists in both the published set and the proteome; published-first
+            // ordering + dedup-by-sequence must keep the NONCANON (published) provenance.
+            def i = fa.findIndexOf { it == 'PEPTIDEK' }
+            assert i > 0
+            assert fa[i - 1].contains('grp=NONCANON')
+            assert !fa.any { it.contains('grp=CANON') && it.contains('|PROT2') }  // proteome copy dropped
+        }
+    }
+}
